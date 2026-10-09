@@ -1,14 +1,30 @@
-PL/SQL PROCEDURE AUTOGRADING
-PASS: answers.sql found
-PASS: CREATE OR REPLACE PROCEDURE found
-FAIL: INSERT_STUDENT procedure not found
-PASS: StudentID parameter found
-PASS: StudentName parameter found
-PASS: INSERT INTO Student found
-PASS: StudentID field found
-FAIL: BEGIN block not found
-FAIL: COMMIT not found
-FAIL: DBMS_OUTPUT not found
-SCORE: 6 / 10
-FAIL: Assignment needs correction
-Error: Process completed with exit code
+CREATE OR REPLACE PROCEDURE INSERT_STUDENT
+(
+    p_StudentID IN NUMBER,
+    p_StudentName IN VARCHAR2,
+    p_DOB IN DATE,
+    p_Gender IN VARCHAR2,
+    p_DepartmentID IN NUMBER
+)
+AS
+BEGIN
+    INSERT INTO Student (
+        StudentID,
+        StudentName,
+        DOB,
+        Gender,
+        DepartmentID
+    )
+    VALUES (
+        p_StudentID,
+        p_StudentName,
+        p_DOB,
+        p_Gender,
+        p_DepartmentID
+    );
+
+    COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('Student record inserted successfully.');
+END;
+/
